@@ -1,0 +1,15 @@
+{
+    "quizzes": [
+        {
+            "id": "2008123",
+            "mondai": "仮想記憶管理における主記憶のページ枠が4のとき，プログラムが参照するページ番号によって，次のようにページを置き換える方式はどれか。<div class=\"img_margin\"><img data-image-index=\"0\"></div>",
+            "sentaku": [
+                "FIFO(First In First Out)",
+                "LFU(Least Frequently Used)",
+                "LIFO(Last In First Out)",
+                "LRU(Least Recently Used)"
+            ],
+            "answer": 0
+        }
+    ]
+}

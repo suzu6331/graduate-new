@@ -1,0 +1,15 @@
+{
+    "quizzes": [
+        {
+            "id": "2008140",
+            "mondai": "DHTML(Dynamic HTML)は，動的なWebコンテンツを開発するために，HTMLを拡張したものである。追加された要素として，適切なものはどれか。",
+            "sentaku": [
+                "CGI，DOM，XSL",
+                "DOM，スクリプト，スタイルシート",
+                "Java，XML，スタイルシート",
+                "JavaScript，アプレット，サーブレット"
+            ],
+            "answer": 1
+        }
+    ]
+}

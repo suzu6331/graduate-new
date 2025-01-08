@@ -1,0 +1,15 @@
+{
+    "quizzes": [
+        {
+            "id": "2008103",
+            "mondai": "関数y＝ƒ(x)上の点(x0，ƒ(x0))における接線とx軸との交点のx座標をx1とする。x0とx1の関係式はどれか。ここで，ƒ'(x)はƒ(x)の導関数である。<div class=\"img_margin\"><img data-image-index=\"0\"></div>",
+            "sentaku": [
+                "x\n1\n＝ƒ'(x\n0\n)－ƒ(x\n0\n)",
+                "x\n1\n＝ƒ(x\n0\n)－ƒ'(x\n0\n)",
+                "x\n1\n＝x\n0\n－\nƒ'(x\n0\n)\nƒ(x\n0\n)",
+                "x\n1\n＝x\n0\n－\nƒ(x\n0\n)\nƒ'(x\n0\n)"
+            ],
+            "answer": 3
+        }
+    ]
+}

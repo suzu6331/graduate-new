@@ -1,0 +1,15 @@
+{
+    "quizzes": [
+        {
+            "id": "2008013",
+            "mondai": "次の流れ図において，ステップS4でYesと判断したときまでの，ステップS1～S4の実行回数をそれぞれn1～n4とする。n1～n4の間に成立する式はどれか。<div class=\"img_margin\"><img data-image-index=\"0\"></div>",
+            "sentaku": [
+                "n\n4\n＝n\n1\n＋n\n2\n＋n\n3",
+                "n\n4\n＝n\n1\n＋n\n2\n－n\n3",
+                "n\n4\n＝n\n1\n－n\n2\n＋n\n3",
+                "n\n4\n＝－n\n1\n＋n\n2\n＋n\n3"
+            ],
+            "answer": 2
+        }
+    ]
+}

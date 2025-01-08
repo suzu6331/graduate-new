@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StartController;
 
+
 // スタート画面（認証不要）
 Route::get('/', function () {
     return redirect()->route('login');
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 });
 
+// 応用情報試験
 Route::prefix('ap')->name('questions.ap.')->group(function () {
     Route::get('/form', [QuestionController::class, 'showAPForm'])->name('form');
     Route::post('/start', [QuestionController::class, 'startAPExam'])->name('start');

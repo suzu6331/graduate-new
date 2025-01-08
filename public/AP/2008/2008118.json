@@ -1,0 +1,10 @@
+{
+    "quizzes": [
+        {
+            "id": "2008118",
+            "mondai": "表のクロック周波数と平均CPI(Cycles Per Instruction)の組合せのうち，同一命令数のプログラムを処理する時間が最も短いものはどれか。",
+            "kaitou": "<img data-image-index=\"0\">",
+            "answer": 1
+        }
+    ]
+}

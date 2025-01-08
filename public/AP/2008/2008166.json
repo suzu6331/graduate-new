@@ -1,0 +1,15 @@
+{
+    "quizzes": [
+        {
+            "id": "2008166",
+            "mondai": "\"社員\"表から，男女それぞれの最年長社員を除くすべての社員を取り出すSQL文とするために，aに入る副問合せはどれか。ここで，\"社員\"表は次の構造とし，下線部は主キーを表す。社員（社員番号，社員名，性別，生年月日）SELECT 社員番号，社員名 FROM 社員 AS S1\nWHERE 生年月日 > (\na\n)",
+            "sentaku": [
+                "SELECT MIN(生年月日) FROM 社員 AS S2\nGROUP BY S2.性別",
+                "SELECT MIN(生年月日) FROM 社員 AS S2\nWHERE S1.生年月日 > S2.生年月日\nOR S1.性別 = S2.性別",
+                "SELECT MIN(生年月日) FROM 社員 AS S2\nWHERE S1.性別 = S2.性別",
+                "SELECT MIN(生年月日) FROM 社員\nGROUP BY S2.性別"
+            ],
+            "answer": 2
+        }
+    ]
+}
