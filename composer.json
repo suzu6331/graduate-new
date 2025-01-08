@@ -15,7 +15,7 @@
     },
     "require-dev": {
         "askdkc/breezejp": "^1.8",
-        "fakerphp/faker": "^1.23",
+        "fakerphp/faker": "^1.24",
         "laravel/breeze": "^2.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
