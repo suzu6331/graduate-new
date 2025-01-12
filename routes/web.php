@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StartController;
+use App\Http\Controllers\RankingController;
 
 
 // スタート画面（認証不要）
@@ -33,6 +34,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/exam', [QuestionController::class, 'showExam'])->name('questions.exam');
     Route::post('/exam', [QuestionController::class, 'handleExam'])->name('questions.handle');
     Route::get('/result', [QuestionController::class, 'showResult'])->name('questions.result');
+
+    Route::get('/ranking', [RankingController::class, 'index'])->name('ranking.index');
+    Route::get('/ranking/fe', [RankingController::class, 'feRanking'])->name('ranking.fe');
+    Route::get('/ranking/ap', [RankingController::class, 'apRanking'])->name('ranking.ap');
 
 });
 
