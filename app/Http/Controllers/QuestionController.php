@@ -27,8 +27,6 @@ class QuestionController extends Controller
             ['year' => "平成25年", 'spring' => ['link' => 'start.php?year=2013&exam=spring'], 'fall' => ['link' => 'start.php?year=2013&exam=fall']],
             ['year' => "平成24年", 'spring' => ['link' => 'start.php?year=2012&exam=spring'], 'fall' => ['link' => 'start.php?year=2012&exam=fall']],
             ['year' => "平成23年", 'spring' => ['link' => 'start.php?year=2011&exam=spring'], 'fall' => ['link' => 'start.php?year=2011&exam=fall']],
-            ['year' => "平成22年", 'spring' => ['link' => 'start.php?year=2010&exam=spring'], 'fall' => ['link' => 'start.php?year=2010&exam=fall']],
-            ['year' => "平成21年", 'spring' => ['link' => 'start.php?year=2009&exam=spring'], 'fall' => ['link' => 'start.php?year=2009&exam=fall']],
         ];
 
         return view('questions.form', compact('yearlyData'));
@@ -122,18 +120,6 @@ class QuestionController extends Controller
             [
                 'year' => "平成23年",
                 'year_numeric' => 2011,
-                'spring' => ['exam' => 'spring'],
-                'fall' => ['exam' => 'fall']
-            ],
-            [
-                'year' => "平成22年",
-                'year_numeric' => 2010,
-                'spring' => ['exam' => 'spring'],
-                'fall' => ['exam' => 'fall']
-            ],
-            [
-                'year' => "平成21年",
-                'year_numeric' => 2009,
                 'spring' => ['exam' => 'spring'],
                 'fall' => ['exam' => 'fall']
             ],
@@ -857,16 +843,10 @@ class QuestionController extends Controller
         $correctAnswers = Session::get('correct_answers', 0);
         $timeTaken = time() - Session::get('total_start_time', time());
 
-        // 問題ごとの得点を計算
-        $perQuestionScore = floor(10000 / $totalQuestions); // スコアが大きすぎるため後述の計算方法を提案
-
-        // 時間ペナルティの分母を設定（例: 5秒ごとに1ポイントのペナルティ）
+        $perQuestionScore = floor(10000 / $totalQuestions);
         $timeDivider = 5;
 
-        // 時間ペナルティを計算
         $timePenalty = floor($timeTaken / $timeDivider);
-
-        // スコアを計算
         $score = ($correctAnswers * $perQuestionScore) - $timePenalty;
 
         // スコアが0未満にならないように調整
@@ -876,7 +856,7 @@ class QuestionController extends Controller
     }
 
     /**
-     * 応用情報技術者試験の結果表示
+     * 応用情報の結果表示
      */
     public function showAPResult()
     {
@@ -884,9 +864,13 @@ class QuestionController extends Controller
         $correctAnswers = Session::get('correct_answers_ap', 0);
         $timeTaken = time() - Session::get('total_start_time_ap', time());
 
-        // スコアの計算方法を調整（例: 正解数 × 100 - 所要時間（分） × 10）
-        $timeMinutes = floor($timeTaken / 60);
-        $score = ($correctAnswers * 100) - ($timeMinutes * 10);
+        $perQuestionScore = floor(10000 / $totalQuestions);
+        $timeDivider = 5;
+
+        $timePenalty = floor($timeTaken / $timeDivider);
+        $score = ($correctAnswers * $perQuestionScore) - $timePenalty;
+
+        // スコアが0未満にならないように調整
         $score = max($score, 0);
 
         return view('questions.result', compact('totalQuestions', 'correctAnswers', 'timeTaken', 'score'));
