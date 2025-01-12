@@ -24,6 +24,12 @@
                     <a href="{{ route('questions.ap.form') }}" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                         {{ __('応用情報') }}
                     </a>
+                    <!-- ランキングへのリンクを追加 (ログインユーザー向け) -->
+                    @auth
+                        <x-nav-link :href="route('ranking.index')">
+                            {{ __('ランキング') }}
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -85,13 +91,6 @@
                             {{ __('Register') }}
                         </x-nav-link>
                     </div>
-                @endauth
-
-                <!-- ランキングへのリンクを追加 (ログインユーザー向け) -->
-                @auth
-                    <x-nav-link :href="route('ranking.index')">
-                        {{ __('ランキング') }}
-                    </x-nav-link>
                 @endauth
 
                 <!-- Hamburger menu for mobile -->
