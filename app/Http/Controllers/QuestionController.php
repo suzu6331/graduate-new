@@ -842,18 +842,27 @@ class QuestionController extends Controller
         $totalQuestions = count(Session::get('questions', []));
         $correctAnswers = Session::get('correct_answers', 0);
         $timeTaken = time() - Session::get('total_start_time', time());
-
+    
         $perQuestionScore = floor(10000 / $totalQuestions);
         $timeDivider = 5;
-
+    
         $timePenalty = floor($timeTaken / $timeDivider);
         $score = ($correctAnswers * $perQuestionScore) - $timePenalty;
-
-        // スコアが0未満にならないように調整
-        $score = max($score, 0);
-
+        $score = max($score, 0); // 下限0
+    
+        // === ランキング用スコアをDB保存 ===
+        if (auth()->check()) {
+            \App\Models\Score::create([
+                'user_id'         => auth()->id(),
+                'exam_type'       => 'FE', // 基本情報
+                'correct_answers' => $correctAnswers,
+                'total_questions' => $totalQuestions,
+                'score'           => $score,
+            ]);
+        }
+    
         return view('questions.result', compact('totalQuestions', 'correctAnswers', 'timeTaken', 'score', 'perQuestionScore'));
-    }
+    }    
 
     /**
      * 応用情報の結果表示
@@ -863,16 +872,24 @@ class QuestionController extends Controller
         $totalQuestions = count(Session::get('questions_ap', []));
         $correctAnswers = Session::get('correct_answers_ap', 0);
         $timeTaken = time() - Session::get('total_start_time_ap', time());
-
+    
         $perQuestionScore = floor(10000 / $totalQuestions);
         $timeDivider = 5;
-
+    
         $timePenalty = floor($timeTaken / $timeDivider);
         $score = ($correctAnswers * $perQuestionScore) - $timePenalty;
-
-        // スコアが0未満にならないように調整
         $score = max($score, 0);
-
+    
+        // === ランキング用スコアをDB保存 ===
+        if (auth()->check()) {
+            \App\Models\Score::create([
+                'user_id'         => auth()->id(),
+                'exam_type'       => 'AP', // 応用情報
+                'correct_answers' => $correctAnswers,
+                'total_questions' => $totalQuestions,
+                'score'           => $score,
+            ]);
+        }    
         return view('questions.result', compact('totalQuestions', 'correctAnswers', 'timeTaken', 'score'));
     }
 }
