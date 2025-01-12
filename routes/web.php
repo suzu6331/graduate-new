@@ -46,7 +46,6 @@ Route::prefix('ap')->name('questions.ap.')->group(function () {
     Route::get('/result', [QuestionController::class, 'showAPResult'])->name('result');
 });
 
-//ランキング
 Route::middleware(['auth'])->group(function () {
     Route::get('/ranking', [RankingController::class, 'index'])->name('ranking.index');
     Route::get('/ranking/fe', [RankingController::class, 'feRanking'])->name('ranking.fe');
